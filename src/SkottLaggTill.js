@@ -81,9 +81,51 @@ const SkottLaggTill = ({ onSparaSerie }) => {
   const handleLaggTillSkott = () => {
     const distance = Math.sqrt((skott.x - 150) ** 2 + (skott.y - 150) ** 2);
     const ringNumber = calculateRing(distance);
-    setSkottSerie([...skottSerie, { x: skott.x, y: skott.y, ring: ringNumber }]);
+    let score = 0;
+
+    switch (ringNumber) {
+      case 0:
+        score = 10;
+        break;
+      case 1:
+        score = 10;
+        break;
+      case 2:
+        score = 9;
+        break;
+      case 3: 
+        score = 8;
+        break;
+      case 4:
+        score = 7;
+        break;
+      default: 
+      score = 0;
+    }
+
+    setSkottSerie([...skottSerie, { x: skott.x, y: skott.y, ring: score }]);
     setSkott({ x: 0, y: 0 }); // Återställer för nästa skott
   };
+
+//function that calculate and sums the score of the series
+  const sumScore = () => {
+    let sum = 0;
+    skottSerie.forEach((skott) => {
+      sum += skott.ring;
+    });
+    return sum;
+  };
+
+//function that shows a crosshair over the middlepoint of all the shots
+  const crosshair = () => {
+    let sumX = 0;
+    let sumY = 0;
+    skottSerie.forEach((skott) => {
+      sumX += skott.x;
+      sumY += skott.y;
+    });
+    return { x: sumX / skottSerie.length, y: sumY / skottSerie.length };
+  }
 
   const handleSparaSerie = () => {
     onSparaSerie([...skottSerie]); // Ingen omvandling behövs här
@@ -126,11 +168,12 @@ const SkottLaggTill = ({ onSparaSerie }) => {
       <h2>Sparade serier:</h2>
       <ul>
         {skottSerie.map((skott, index) => (
-          <li key={index}>
-            Serie {index + 1}: ({skott.x}, {skott.y}) - Ring: {skott.ring}
-          </li>
+          <><li key={index}>
+            Skott {index + 1}: ({skott.x}, {skott.y}) - Ring: {skott.ring}
+         </li></>
         ))}
       </ul>
+      <p> {sumScore()}</p>
     </div>
   );
 };
