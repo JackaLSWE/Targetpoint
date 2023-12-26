@@ -1,5 +1,6 @@
 import React from 'react';
 import PistolTavla from './PistolTavla';
+import './App.css';
 
 function App() {
   return (

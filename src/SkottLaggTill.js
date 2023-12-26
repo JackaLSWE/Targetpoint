@@ -63,7 +63,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
 
 
   const calculateRing = (distance) => {
-    const radiusValues = [10, 30, 60, 90, 120];
+    const radiusValues = [10, 20, 40, 60, 80, 100, 120];
     for (let i = 0; i < radiusValues.length; i++) {
       if (distance <= radiusValues[i]) {
         return i;
@@ -144,9 +144,11 @@ const SkottLaggTill = ({ onSparaSerie }) => {
         style={{ border: '1px solid black' }}
       >
         <circle cx="150" cy="150" r="120" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="90" fill="black" stroke="white" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="100" fill="black" stroke="white" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="80" fill="black" stroke="white" strokeWidth="1"  />
         <circle cx="150" cy="150" r="60" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="30" fill="black" stroke="white" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="40" fill="black" stroke="white" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="20" fill="black" stroke="white" strokeWidth="1"  />
         <circle cx="150" cy="150" r="10" fill="black" stroke="white" strokeWidth="1" />
         {skottSerie.map((skott, index) => (
           <React.Fragment key={index}>
