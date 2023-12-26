@@ -63,7 +63,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
 
 
   const calculateRing = (distance) => {
-    const radiusValues = [10, 20, 40, 60, 80, 100, 120];
+    const radiusValues = [10, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200];
     for (let i = 0; i < radiusValues.length; i++) {
       if (distance <= radiusValues[i]) {
         return i;
@@ -98,6 +98,24 @@ const SkottLaggTill = ({ onSparaSerie }) => {
         break;
       case 4:
         score = 7;
+        break;
+      case 5: 
+        score = 6;
+        break;
+      case 6:
+        score = 5;
+        break;
+      case 7:
+        score = 4;
+        break;
+      case 8:
+        score = 3;
+        break;
+      case 9:
+        score = 2;
+        break;
+      case 10:
+        score = 1;
         break;
       default: 
       score = 0;
@@ -139,7 +157,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
         xmlns="http://www.w3.org/2000/svg"
         width="300"
         height="300"
-        viewBox="0 0 300 300"
+        viewBox="0 -50 300 400"
         onClick={handleOnClick}
         style={{ border: '1px solid black' }}
       >
@@ -179,7 +197,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
          </li></>
         ))}
       </ul>
-      <p> {sumScore()}</p>
+      <p>Total: {sumScore()}</p>
     </div>
   );
 };
