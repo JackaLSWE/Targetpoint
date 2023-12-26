@@ -55,7 +55,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
 export default SkottLaggTill; */
 // SkottLaggTill.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SkottLaggTill = ({ onSparaSerie }) => {
   const [skottSerie, setSkottSerie] = useState([]);
@@ -72,14 +72,17 @@ const SkottLaggTill = ({ onSparaSerie }) => {
     return radiusValues.length; // Returnera en siffra för träff utanför alla ringar
   };
   
+
   
   const handleOnClick = (event) => {
-    const { offsetX, offsetY } = event.nativeEvent;
-    setSkott({ x: offsetX, y: offsetY });
-  };
+    //const { offsetX, offsetY } = event.nativeEvent;
+    const svg = event.target.ownerSVGElement;
+  const point = svg.createSVGPoint();
+  point.x = event.clientX;
+  point.y = event.clientY;
+  const { x, y } = point.matrixTransform(svg.getScreenCTM().inverse());
 
-  const handleLaggTillSkott = () => {
-    const distance = Math.sqrt((skott.x - 150) ** 2 + (skott.y - 150) ** 2);
+    const distance = Math.sqrt((x - 150) ** 2 + (y - 150) ** 2);
     const ringNumber = calculateRing(distance);
     let score = 0;
 
@@ -121,7 +124,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
       score = 0;
     }
 
-    setSkottSerie([...skottSerie, { x: skott.x, y: skott.y, ring: score }]);
+    setSkottSerie(prevSkottSerie =>[...skottSerie, { x: x, y: y, ring: score }]);
     setSkott({ x: 0, y: 0 }); // Återställer för nästa skott
   };
 
@@ -153,7 +156,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
   return (
     <div>
       <p>Klicka på måltavlan för att lägga till skott:</p>
-      <svg
+      <svg 
         xmlns="http://www.w3.org/2000/svg"
         width="300"
         height="300"
@@ -187,7 +190,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
         ))}
       </svg>
       <br />
-      <button onClick={handleLaggTillSkott}>Lägg till skott</button>
+      
       <button onClick={handleSparaSerie}>Spara serie</button>
       <h2>Sparade serier:</h2>
       <ul>
