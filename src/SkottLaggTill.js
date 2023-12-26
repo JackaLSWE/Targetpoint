@@ -143,8 +143,12 @@ const SkottLaggTill = ({ onSparaSerie }) => {
         onClick={handleOnClick}
         style={{ border: '1px solid black' }}
       >
-        <circle cx="150" cy="150" r="120" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="100" fill="black" stroke="white" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="200" fill="white" stroke="black" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="180" fill="white" stroke="black" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="160" fill="white" stroke="black" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="140" fill="white" stroke="black" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="120" fill="white" stroke="black" strokeWidth="1"  />
+        <circle cx="150" cy="150" r="100" fill="white" stroke="black" strokeWidth="1"  />
         <circle cx="150" cy="150" r="80" fill="black" stroke="white" strokeWidth="1"  />
         <circle cx="150" cy="150" r="60" fill="black" stroke="white" strokeWidth="1"  />
         <circle cx="150" cy="150" r="40" fill="black" stroke="white" strokeWidth="1"  />
