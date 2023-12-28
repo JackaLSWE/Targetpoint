@@ -20,7 +20,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
 
   
   const handleOnClick = (event) => {
-    //const { offsetX, offsetY } = event.nativeEvent;
+    
     const svg = event.target.ownerSVGElement;
   const point = svg.createSVGPoint();
   point.x = event.clientX;
