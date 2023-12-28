@@ -1,59 +1,4 @@
-/*import React, { useState } from 'react';
 
-const SkottLaggTill = ({ onSparaSerie }) => {
-  const [skottSerie, setSkottSerie] = useState([]);
-  const [skott, setSkott] = useState({ x: 0, y: 0 });
-
-  const handleOnClick = (event) => {
-    const { offsetX, offsetY } = event.nativeEvent;
-    setSkott({ x: offsetX, y: offsetY });
-  };
-
-  const handleLaggTillSkott = () => {
-    setSkottSerie([...skottSerie, { x: skott.x, y: skott.y }]);
-    setSkott({ x: 0, y: 0 }); // Återställer för nästa skott
-  };
-
-  const handleSparaSerie = () => {
-    onSparaSerie(skottSerie.map(skott => ({ x: skott.x, y: skott.y })));
-    setSkottSerie([]);
-  };
-
-  return (
-    <div>
-      <p>Klicka på måltavlan för att lägga till skott:</p>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="300"
-        height="300"
-        viewBox="0 0 300 300"
-        onClick={handleOnClick}
-        style={{ border: '1px solid black' }}
-      >
-        <circle cx="150" cy="150" r="120" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="90" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="60" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="30" fill="black" stroke="white" strokeWidth="1"  />
-        <circle cx="150" cy="150" r="10" fill="black" stroke="white" strokeWidth="1" />
-        {skottSerie.map((skott, index) => (
-          <circle
-            key={index}
-            cx={skott.x}
-            cy={skott.y}
-            r="5"
-            fill="red"
-          />
-        ))}
-      </svg>
-      <br />
-      <button onClick={handleLaggTillSkott}>Lägg till skott</button>
-      <button onClick={handleSparaSerie}>Spara serie</button>
-    </div>
-  );
-};
-
-export default SkottLaggTill; */
-// SkottLaggTill.js
 
 import React, { useState, useEffect } from 'react';
 
@@ -75,7 +20,7 @@ const SkottLaggTill = ({ onSparaSerie }) => {
 
   
   const handleOnClick = (event) => {
-    //const { offsetX, offsetY } = event.nativeEvent;
+    
     const svg = event.target.ownerSVGElement;
   const point = svg.createSVGPoint();
   point.x = event.clientX;
